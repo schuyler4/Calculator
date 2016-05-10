@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<title>Basic Calculator</title>
+<head>
+<body>
+<style>
+#buttons{
+	margin-left:40px;
+	width:200px;
+	height:200px;                                                                                     
+}
+button{
+	width:50px;
+	height:50px;
+	background-color:white;
+	border:2px solid black;
+	font-size:30px;
+}
+input{
+	width:57px;
+	height:44px;
+	float:left;
+	border-right:2px dashed black;
+	border-left:none;
+	border-top:none;
+	border-bottom:none;
+	font-size:40px;
+	text-align:center;
+	
+}
+#anser{
+	width:57px;
+	height:44px;
+	font-size:40px;
+	text-align:center;
+	float:left;
+	font-family:arial;
+	margin-top:2px;
+}
+</style>
+<div id="calcFrame" style="border:2px solid black;width:300px;height:300px;">
+<div id="output_calc" style="border:2px solid black;width:250px;height:50px;margin-top:10px;margin-left:25px">
+	<input id="num1"></input>
+	<input id="operation"></input>
+	<input id="num2"></input>
+	<div id="anser"><p></p></div>
+</div>
+<table id="buttons">
+	<tr>
+		<td><button id="1" class="btn">1</button></td>
+		<td><button id="2" class="btn">2</button></td>
+		<td><button id="3" class="btn">3</button></td>
+		<td><button id="eql">=</button></td>
+	</tr>
+	<tr>
+		<td><button id="4" class="btn">4</button></td>
+		<td><button id="5" class="btn">5</button></td>
+		<td><button id="6" class="btn">6</button></td>
+		<td><button id="c">c</button></td>
+	</tr>
+	<tr>
+		<td><button id="7" class="btn">7</button></td>
+		<td><button id="8" class="btn">8</button></td>
+		<td><button id="9" class="btn">9</button></td>
+		<td><button id="0" class="btn">0</button></td>
+	</tr>
+	<tr>
+		<td><button id="plus" class="btn">+</button></td>
+		<td><button id="minus" class="btn">-</button></td>
+		<td><button id="x" class="btn">x</button></td>
+		<td><button id="divide" class="btn">%</button></td>
+	</tr>
+</div>
+
+<script>
+	$(document).ready(function(){
+		var activeInput = "num1";
+		$(".btn").click(function(event){
+		console.log($(event.target).attr("id"));
+		console.log(activeInput);
+		$("#"+activeInput).val($(event.target).attr("id"));
+		});
+		$("input").click(function(event){
+		activeInput = $(event.target).attr("id");
+		});
+		$("#c").click(function(event){
+			$("input").val("");
+			$("#anser").text("");
+			console.log("panda");
+		});
+		$("#eql").click(function(){
+		var numOne = Number($('#num1').val());
+		var numTwo = Number($('#num2').val());
+		var operation = $('#operation').val();
+		console.log("click");
+		console.log(numOne);
+			if(operation == 'x'){
+				$('#anser').text(numOne * numTwo);
+			}
+			if(operation == '%'){
+				$('#anser').text(numOne / numTwo);
+			}
+			if(operation =='-'){
+				$('#anser').text(numOne - numTwo);
+			}
+			if(operation == '+'){
+				$('#anser').text(numOne + numTwo);
+			}
+		});
+	});
+</script>
+</body>
+</html>
